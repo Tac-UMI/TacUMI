@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>TacUMI</title>
-    <meta name="description" content="A Multi-Modal Universal Manipulation Interface for Contact-Rich Tasks">
+    <title>TacUMI: A Multi-Modal Universal Manipulation Interface for Contact-Rich Tasks</title>
+    <meta name="description" content="TacUMI: A Multi-Modal Universal Manipulation Interface for Contact-Rich Tasks">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
@@ -87,20 +87,508 @@
 <div class="container" id="main">
     <div class="row mt-4">
         <h2 class="col-md-12 text-center">
-            <b>TacUMI</b>
+            <b>TacUMI:<br>A Multi-Modal Universal Manipulation Interface for Contact-Rich Tasks</b>
         </h2>
     </div>
 
-    <div class="text-center mb-4">
-        <p>Our design will be published soon!</p>
+    <!-- <div class="text-center mt-4">
+        <a href="https://arxiv.org/" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
+            <i class="fas fa-file-pdf"></i> View on arXiv
+        </a>
+    </div> -->
+
+    </br>
+    <div class="container-fluid">
+        <div class="row justify-content-md-center">
+            <div class="col-12">
+                <p class="text-center">
+                    <!-- <img src="imgs/moti.png" class="img-fluid" alt="motivation" style="max-width: 100%;"> -->
+                </p>
+                <h3 class="mt-4 mb-2">Abstract</h3>
+                <p class="text-justify">
+                    <b>Task decomposition</b> is critical for understanding and learning complex long-horizon manipulation tasks. 
+                    Especially for tasks involving rich physical interactions, relying solely on visual observations and robot proprioceptive information often fails to reveal the underlying event transitions. 
+                    This raises the requrement for efficient collection of high-quality multi-modal data as well as robust segmentation method to decompose demonstrations into meaningful modules.
+                </p>
+                
+                <p class="text-justify">
+                    Building on the idea of the handheld demonstration device Universal Manipulation Interface (UMI),
+                    we introduce <b>TacUMI</b>, a multi-modal data collection system that integrates additionally ViTac sensors, force–torque sensor, 
+                    and pose tracker into a compact, robot-compatible gripper design, 
+                    which enables synchronized acquisition of all these modalities during human demonstrations. 
+                    We then propose a multi-modal segmentation framework that leverages temporal models to detect semantically meaningful event boundaries in sequential manipulations.
+                    Evaluation on a challenging cable mounting task shows more than 90% segmentation accuracy and highlights a remarkable improvement with more modalities, which validates that TacUMI establishes a practical foundation for both scalable collection and segmentation of multi-modal demonstrations in contact-rich tasks.
+                </p>
+
+
+                    <div onclick="scrollToSection('binpicking-section')"
+                         style="position: absolute; top: 0%; left: 0%; width: 30%; height: 100%; cursor: pointer;">
+                
+                    <div onclick="scrollToSection('binpicking-section')"
+                         style="position: absolute; top: 0%; left: 0%; width: 30%; height: 100%; cursor: pointer;">
+            </div>
+        </div>
     </div>
 
+    </br>
+
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/lNyc-lVyVSs"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen 
+            class="rounded shadow"
+            width="560" 
+            height="315">
+        </iframe>
+    </div>
+
+   
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    </br>
+
+    <div class="text-center mb-4">
+        <h1 class="section-title">1. Hardware Design</h1>
+        <p>TacUMI is a handheld platform designed for synchronized multi-modal data collection in long-horizon, contact-rich tasks.
+            The system integrates a 6D force–torque sensor, a Vive tracker, and ViTac sensor on fingertips. 
+            A continuous self-locking mechanism allows stable grasps without sustained trigger pressure, ensuring that force–torque readings reflect only external interactions.</p>
+        <img src="imgs/All_parts.jpg" class="img-fluid" alt="all_parts_of_gripper" style="max-width: 100%;">
+    </div>
+
+
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card video-card p-3">
+                <h4>The F/T data collected by the teleoperated robot and TacUMI</h4>
+                <p>
+                    TacUMI’s continuous locking ensured stable grasps across cable sizes, 
+                    and its data closely matched that of a teleoperated robot, confirming 
+                    <b>transferable</b>, <b>robot-consumable</b> measurements.
+                </p>
+
+                <div class="row g-compact align-items-stretch">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="media-box">
+                        <img src="imgs/sigema.png" class="fill">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="media-box">
+                        <video class="fill" autoplay muted playsinline loop>
+                            <source src="videos/teleoperation.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-5">
+                        <div class="media-box stack">
+                        <img src="imgs/robot_force.svg"  alt="Top plot"    class="fill">
+                        <img src="imgs/robot_torque.svg" alt="Bottom plot" class="fill">
+                        </div>
+                    </div>
+                </div>
+            
+
+
+                <div class="row g-compact">
+
+                    <div class="col-lg-3">
+                        <div class="media-box">
+                        <video class="fill" autoplay muted playsinline loop>
+                            <source src="videos/explosion_video.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="media-box">
+                        <video class="fill" autoplay muted playsinline loop>
+                            <source src="videos/TacUMI.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="media-box stack">
+                        <img src="imgs/TacUMI_force.svg"  alt="Top plot"    class="fill">
+                        <img src="imgs/TacUMI_torque.svg" alt="Bottom plot" class="fill">
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card video-card p-3">
+                <h4>The F/T data collected by the design without locking mechanism</h4>
+                <p>
+                    Design without a locking mechanism successfully detected F/T data, however, since the operator had to continuously hold the trigger, 
+                    an additional non-constant actuation force was introduced, which could not be removed through preprocessing.
+                </p>
+
+                <div class="row g-compact align-items-stretch">
+                    <div class="col-lg-3">
+                        <div class="media-box">
+                        <video class="fill" autoplay muted playsinline loop>
+                            <source src="videos/no_locking_mechanism_all_parts.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="media-box">
+                        <video class="fill" autoplay muted playsinline loop>
+                            <source src="videos/no_locking_mechanisim.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-5">
+                        <div class="media-box stack">
+                        <img src="imgs/without_locking_force.svg"  alt="Top plot"    class="fill">
+                        <img src="imgs/without_locking_torque.svg" alt="Bottom plot" class="fill">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card video-card p-3">
+                <h4>The F/T data collected by the design with a ratchet-based locking mechanism</h4>
+                <p>
+                    Design with a ratchet-based locking mechanism exhibited discontinuous locking of the grasping width. 
+                    As a result, the gripper failed to securely hold the cable, causing it to slip out during tightening and leading to unsuccessful task execution.
+                </p>
+
+                <div class="row g-compact align-items-stretch">
+
+                    <div class="col-lg-3">
+                        <div class="media-box">
+                        <video class="fill" autoplay muted playsinline loop>
+                            <source src="videos/rachet_all_parts.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="media-box">
+                        <video class="fill" autoplay muted playsinline loop>
+                            <source src="videos/rachet.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-5">
+                        <div class="media-box stack">
+                        <img src="imgs/rachet_force.svg"  alt="Top plot"    class="fill">
+                        <img src="imgs/rachet_torque.svg" alt="Bottom plot" class="fill">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card video-card p-3">
+                <h4>The F/T data collected by the design with  tension spring-driven fingertips</h4>
+                <p>
+                    The fingertips are normally closed by a tension spring and open when the trigger is pulled backward. 
+                    Although  F/T data are consistent with those collected from the teleoperation, it lacks generalizability due to the stiffness of the tension spring.
+                </p>
+
+                <div class="row g-compact align-items-stretch">
+
+                    <div class="col-lg-3">
+                        <div class="media-box">
+                        <video class="fill" autoplay muted playsinline loop>
+                            <source src="videos/tension_spring_all_parts.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="media-box">
+                        <video class="fill" autoplay muted playsinline loop>
+                            <source src="videos/tension_spring.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-5">
+                        <div class="media-box stack">
+                        <img src="imgs/tension_spring_force.svg"  alt="Top plot"    class="fill">
+                        <img src="imgs/tension_spring_torque.svg" alt="Bottom plot" class="fill">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+</div>      
+    
+    </br>
+    <!-- <section id="viewer">
+        <h4>Interactive 3D Model</h4>
+        <iframe src="models/TacUMI.html" 
+                width="100%" 
+                height="600" 
+                style="border: none; border-radius: 10px;">
+        </iframe>
+    </section> -->
+    <section id="viewer">
+        <h4>Interactive 3D Model</h4>
+
+        <iframe src="models/TacUMI.html" 
+                width="100%" 
+                height="600" 
+                style="border: none; border-radius: 10px; margin-bottom:20px;">
+        </iframe>
+
+        <div style="display: flex; gap: 15px;">
+            <iframe src="models/no_locking_mechanism.html" 
+                    style="flex:1; height:250px; border:none; border-radius:10px;">
+            </iframe>
+            <iframe src="models/rachet.html" 
+                    style="flex:1; height:250px; border:none; border-radius:10px;">
+            </iframe>
+            <iframe src="models/Inverse_direction.html" 
+                    style="flex:1; height:250px; border:none; border-radius:10px;">
+            </iframe>
+        </div>
+    </section>
+
+
+    </br>
+    <!-- Segmentation Algorithm Section -->
+    <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+        <div class="text-center mb-4">
+            <h1 class="section-title">2. Event Segmentation Algorithm</h1>
+            <p class="text-justify">
+            Our event segmentation framework consists of four main stages. 
+            First, we perform data extraction from tactile, visual, force–torque, and pose modalities. 
+            These are synchronized into a fused feature sequence. 
+            Second, we apply a sliding window of length 50 with a stride of 10 to segment the sequence into overlapping chunks.   
+            Third, each window is processed by sequence models, which capture temporal dependencies and predict per-frame skills. 
+            Finally, we use soft voting to merge overlapping predictions and recover accurate frame-level segmentations of the entire demonstration.
+            </p>
+
+            <div class="media-box auto-ratio rounded shadow mx-auto">
+                <video class="fill" controls autoplay muted loop>
+                    <source src="videos/segmentation.mp4" type="video/mp4">
+                </video>
+            </div>
+
+        </div>
+        </div>
+    </div>
+    </div>
+
+<div class="row mt-4">
+    <!-- Left Column -->
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h3 class="text-muted">Ablation on Model Architectures and Input Modalities</h3>
+            <p class="text-justify">
+          Our ablation study shows that <b>BiLSTM</b> achieves the best segmentation accuracy, clearly outperforming TCN and Transformer. 
+          Among input modalities, vision alone performs worst, while adding <b>tactile</b> or <b>F/T signals</b> brings substantial improvements. 
+          <b>TCP pose</b> provides little additional benefit, so the best results come from combining tactile and F/T with vision. 
+          Class-wise, common phases like <i>idle</i> and <i>grasped</i> are recognized reliably, but short and subtle phases such as <i>released</i> remain challenging.
+        </p>
+            <!-- Table -->
+            <div class="table-responsive">
+                <h5 class="text-center">Frame-wise Accuracy on TacUMI’s data</h5>
+                <table class="table table-bordered text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Input Modality</th>
+                            <th>BiLSTM</th>
+                            <th>TCN</th>
+                            <th>Transformer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Camera only</td>
+                            <td>0.7608</td>
+                            <td>0.7217</td>
+                            <td>0.3180</td>
+                        </tr>
+                        <tr>
+                            <td>Camera + Tactile</td>
+                            <td>0.9076</td>
+                            <td>0.8880</td>
+                            <td>0.6765</td>
+                        </tr>
+                        <tr>
+                            <td>Camera + F/T</td>
+                            <td>0.8632</td>
+                            <td>0.8325</td>
+                            <td>0.6645</td>
+                        </tr>
+                        <tr>
+                            <td>Camera + Pose</td>
+                            <td>0.8165</td>
+                            <td>0.7675</td>
+                            <td>0.4242</td>
+                        </tr>
+                        <tr>
+                            <td>Camera + Tactile + F/T</td>
+                            <td>0.9359</td>
+                            <td>0.9051</td>
+                            <td>0.7459</td>
+                        </tr>
+                        <tr>
+                            <td><b>Camera + Tactile + F/T + Pose</b></td>
+                            <td><b>0.9402</b></td>
+                            <td>0.8945</td>
+                            <td>0.7596</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Image -->
+            <div class="d-flex justify-content-center mt-3">
+                <img src="imgs/heatmap.png" class="img-fluid rounded shadow" alt="Heatmap">
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h3 class="text-muted">Cross-Platform Validation on Robot Data</h3>
+            <p class="text-justify">
+            Models trained on TacUMI data were tested on robot demonstrations. 
+            Vision alone performed poorly due to the domain gap, while adding tactile or F/T signals greatly improved accuracy. 
+            Combining both nearly closed the gap, confirming that TacUMI data transfers well to robot platforms and showing the importance of multimodal fusion.
+            </p>
+
+            <!-- Table -->
+            <div class="table-responsive">
+                <h5 class="text-center">Frame-wise Accuracy on teleoperated robot’s data</h5>
+                <table class="table table-bordered text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Input Modality</th>
+                            <th>BiLSTM</th>
+                            <th>TCN</th>
+                            <th>Transformer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Camera only</td>
+                            <td>0.2288</td>
+                            <td>0.1820</td>
+                            <td>0.2227</td>
+                        </tr>
+                        <tr>
+                            <td>Camera + Tactile</td>
+                            <td>0.7474</td>
+                            <td>0.6002</td>
+                            <td>0.5351</td>
+                        </tr>
+                        <tr>
+                            <td>Camera + F/T</td>
+                            <td>0.6611</td>
+                            <td>0.6366</td>
+                            <td>0.4126</td>
+                        </tr>
+                        <tr>
+                            <td>Camera + Pose</td>
+                            <td>0.4694</td>
+                            <td>0.4636</td>
+                            <td>0.2256</td>
+                        </tr>
+                        <tr>
+                            <td>Camera + Tactile + F/T</td>
+                            <td>0.9155</td>
+                            <td>0.8793</td>
+                            <td>0.8092</td>
+                        </tr>
+                        <tr>
+                            <td><b>Camera + Tactile + F/T + Pose</b></td>
+                            <td><b>0.9104</b></td>
+                            <td>0.7262</td>
+                            <td>0.7796</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="spacer"></div>
-<div class="spacer"></div>
-</br>
+        </br>
+        <div id="F/T data Preprocessing" class="text-center mb-4">
+        <div class="text-center mb-4">
+            <h1 class="section-title">3. F/T data Preprocessing</h1>
+            <p class="text-justify">Using our event segmentation algorithm, we filter trigger artifacts from raw F/T signals to obtain clean interaction-only streams, ensuring consistent and transferable data.
+
+            </p>
+        <table>
+            <td>
+                <div class="col-md-12">
+                    <video id="videoS1" width="100%" class="img-fluid" playsinline muted loop autoplay class="rounded shadow mb-3">
+                        <source src="videos/preprocessing.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </td>
+        </table>
+    </div>
+
+    </br>
+    <div id="Cable Mounting Process" class="text-center mb-4">
+    <h1 class="section-title">4. Cable Mounting Process</h1>
+    <p class="text-justify">
+        We validate our framework on dual-arm cable mounting, 
+        using multimodal data from both TacUMI handheld demonstrations and teleoperated Franka robots, 
+        showing robust segmentation and cross-platform generalization.
+    </p>
+
+    <div class="row">
+
+        <div class="col-md-6">
+        <div class="video-container">
+            <video class="img-fluid rounded shadow" playsinline muted loop autoplay>
+            <source src="videos/whole_process_tacumi.mp4" type="video/mp4">
+            </video>
+            <div class="video-label">×5</div>
+        </div>
+        </div>
+
+        <div class="col-md-6">
+        <div class="video-container">
+            <video class="img-fluid rounded shadow" playsinline muted loop autoplay>
+            <source src="videos/whole_process_teleoperation.mp4" type="video/mp4">
+            </video>
+            <div class="video-label">×22</div>
+        </div>
+        </div>
+    </div>
+    </div>
+
 
 </body>
-
 </html>
