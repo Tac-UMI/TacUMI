@@ -80,6 +80,42 @@
         .spacer {
             margin-top: 2rem; /* Adjust the value as needed */
         }
+        .link-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 22px;
+        }
+        .link-row a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 18px;
+            border: 1px solid #111111;
+            border-radius: 999px;
+            background: #111111;
+            font-size: 1.1rem;
+            color: #ffffff;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .link-row a:hover {
+            background: #2a2a2a;
+            border-color: #2a2a2a;
+            color: #ffffff;
+        }
+        .button-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+        .button-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
     </style>
 </head>
 
@@ -91,11 +127,24 @@
         </h2>
     </div>
 
-    <!-- <div class="text-center mt-4">
-        <a href="https://arxiv.org/" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
-            <i class="fas fa-file-pdf"></i> View on arXiv
+    <div class="link-row">
+        <a href="https://arxiv.org/abs/2601.14550" target="_blank" rel="noopener noreferrer" aria-label="View TacUMI paper on arXiv">
+            <span class="button-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                    <path d="M6 2h8l4 4v16H6V2zm8 1.5V7h3.5L14 3.5zM8.5 11h7v1.5h-7V11zm0 3h7v1.5h-7V14zm0 3h5v1.5h-5V17z"></path>
+                </svg>
+            </span>
+            <span>arXiv</span>
         </a>
-    </div> -->
+        <a href="3d-print-models.html" rel="noopener noreferrer" aria-label="View and download TacUMI 3D print models">
+            <span class="button-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                    <path d="M12 2 3.5 6.5v9L12 20l8.5-4.5v-9L12 2zm0 2.3 5.6 3L12 10.3 6.4 7.3 12 4.3zM5.5 9l5.5 3v5.1l-5.5-2.9V9zm13 5.2-5.5 2.9V12l5.5-3v5.2z"></path>
+                </svg>
+            </span>
+            <span>3D Print Models</span>
+        </a>
+    </div>
 
     </br>
     <div class="container-fluid">

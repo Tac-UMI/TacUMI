@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>TacUMI 3D Print Models</title>
+    <meta name="description" content="TacUMI 3D print model previews and downloads">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #161616;
+        }
+
+        .page-shell {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 36px 0 56px;
+        }
+
+        .title-block {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .title-block h1 {
+            margin: 0;
+            font-size: clamp(2rem, 3vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: #2c3e50;
+        }
+
+        .title-block p {
+            margin: 12px auto 0;
+            max-width: 760px;
+            font-size: 1.08rem;
+            color: #555555;
+            text-align: center;
+        }
+
+        .link-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 46px;
+            padding: 11px 18px;
+            border: 1px solid #111111;
+            border-radius: 999px;
+            background: #111111;
+            font-size: 1.05rem;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .action-link:hover {
+            background: #2a2a2a;
+            border-color: #2a2a2a;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .button-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            flex: 0 0 24px;
+        }
+
+        .button-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            align-items: start;
+        }
+
+        .preview-card {
+            min-width: 0;
+        }
+
+        .preview-card h2 {
+            margin: 0 0 14px;
+            text-align: center;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .model-frame {
+            width: 100%;
+            height: 560px;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .preview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .model-frame {
+                height: 460px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .page-shell {
+                width: min(100% - 20px, 1180px);
+                padding-top: 26px;
+            }
+
+            .model-frame {
+                height: 380px;
+            }
+
+            .action-link {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page-shell">
+        <section class="title-block">
+            <h1>TacUMI 3D Print Models</h1>
+            <p>Interactive model previews and downloadable 3D printing files.</p>
+            <div class="link-row">
+                <a class="action-link" href="index.html" aria-label="Back to TacUMI homepage">
+                    <span class="button-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" role="img">
+                            <path d="M10.7 4.3 12.1 5.7 7.8 10H20v2H7.8l4.3 4.3-1.4 1.4L4 11l6.7-6.7z"></path>
+                        </svg>
+                    </span>
+                    <span>Home</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="preview-grid" aria-label="TacUMI 3D print model previews">
+            <article class="preview-card">
+                <h2>Original Design</h2>
+                <iframe class="model-frame" src="models/TacUMI.html" title="Original TacUMI interactive 3D model"></iframe>
+                <div class="download-row">
+                    <a class="action-link" href="downloads/TacUMI_Original_Design_3D_Print_Files.zip" download aria-label="Download original TacUMI 3D print files">
+                        <span class="button-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" role="img">
+                                <path d="M11 3h2v8.2l3.2-3.2 1.4 1.4L12 15 6.4 9.4 7.8 8 11 11.2V3zM5 17h14v2H5v-2z"></path>
+                            </svg>
+                        </span>
+                        <span>Original Design</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="preview-card">
+                <h2>Franka Design</h2>
+                <iframe class="model-frame" src="models/Franka_Design.html" title="Franka TacUMI interactive 3D model"></iframe>
+                <div class="download-row">
+                    <a class="action-link" href="downloads/TacUMI_Franka_3D_Print_Files.zip" download aria-label="Download TacUMI Franka 3D print files">
+                        <span class="button-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" role="img">
+                                <path d="M11 3h2v8.2l3.2-3.2 1.4 1.4L12 15 6.4 9.4 7.8 8 11 11.2V3zM5 17h14v2H5v-2z"></path>
+                            </svg>
+                        </span>
+                        <span>Franka Design</span>
+                    </a>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
