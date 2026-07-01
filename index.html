@@ -116,6 +116,62 @@
             height: 22px;
             fill: currentColor;
         }
+        .venue-line {
+            margin: 8px 0 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6a737d;
+        }
+        .citation-section {
+            margin: 3rem 0 3.5rem;
+        }
+        .citation-card {
+            position: relative;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 1.25rem;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .citation-card pre {
+            margin: 0;
+            padding: 0;
+            padding-right: 6.5rem;
+            overflow-x: auto;
+            white-space: pre;
+            color: #1f2933;
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+        .copy-citation {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            border: 1px solid #111111;
+            border-radius: 999px;
+            background: #111111;
+            color: #ffffff;
+            padding: 0.45rem 0.9rem;
+            font-size: 0.92rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .copy-citation:hover {
+            background: #2a2a2a;
+            border-color: #2a2a2a;
+        }
+        @media (max-width: 640px) {
+            .citation-card {
+                padding-top: 3.6rem;
+            }
+            .citation-card pre {
+                padding-right: 0;
+                font-size: 0.82rem;
+            }
+        }
     </style>
 </head>
 
@@ -125,6 +181,7 @@
         <h2 class="col-md-12 text-center">
             <b>TacUMI:<br>A Multi-Modal Universal Manipulation Interface for Contact-Rich Tasks</b>
         </h2>
+        <p class="col-md-12 text-center venue-line">Presented at ICRA 2026</p>
     </div>
 
     <div class="link-row">
@@ -638,6 +695,50 @@
     </div>
     </div>
 
+    <div id="citation" class="citation-section text-center">
+        <h1 class="section-title">Citation</h1>
+        <div class="citation-card">
+            <button class="copy-citation" type="button" data-copy-target="tacumi-bibtex" aria-label="Copy TacUMI BibTeX citation">Copy</button>
+            <pre id="tacumi-bibtex">@inproceedings{cheng2026tacumi,
+  title={TacUMI: A Multi-Modal Universal Manipulation Interface for Contact-Rich Tasks},
+  author={Cheng, Tailai and Chen, Kejia and Chen, Lingyun and Zhang, Liding and Zhang, Yue and Ling, Yao and Hamad, Mahdi and Bing, Zhenshan and Wu, Fan and Sharma, Karan and Knoll, Alois},
+  booktitle={2026 IEEE International Conference on Robotics and Automation (ICRA)},
+  year={2026},
+  organization={IEEE}
+}</pre>
+        </div>
+    </div>
+<script>
+    document.querySelectorAll('.copy-citation').forEach(function (button) {
+        button.addEventListener('click', function () {
+            var target = document.getElementById(button.getAttribute('data-copy-target'));
+            if (!target) return;
+            var text = target.textContent;
+            var setCopied = function () {
+                var original = button.textContent;
+                button.textContent = 'Copied';
+                window.setTimeout(function () {
+                    button.textContent = original;
+                }, 1600);
+            };
 
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(setCopied);
+                return;
+            }
+
+            var textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            setCopied();
+        });
+    });
+</script>
 </body>
 </html>
